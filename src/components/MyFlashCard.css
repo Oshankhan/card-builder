@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Ubuntu:wght@300;400&display=swap');
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Roboto Condensed', sans-serif;
+font-family: 'Ubuntu', sans-serif;
+
+}  
+body{
+   background-color:#f5f1ec !important;
+} 
+:root{
+    --card-width:350px;
+    --image-width:calc(var(--card-width)/3.2);
+}
+
+
+
+.cardstyle .Cardimg{
+    position: relative;
+    width: 100%;
+    width:var(--image-width);
+    height: var(--image-width);
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    margin: -4rem auto -1rem;
+    padding: 0.25rem;
+    overflow: hidden;
+    background-color: #fff;
+    transition: 0.4sec;
+    border:3px solid pink;
+}
+
+.cardstyle{
+    background-color: #fff;
+    position: relative;
+    margin-top:70px !important;
+    padding: 10px;
+    width :100%;
+    max-width: var(--card-width);
+    height: 230px !important;
+    border:2px solid rgb(224, 228, 230) !important;
+    text-align: center;
+}
+.cardgroup{
+    margin: 30px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+}
+
+.btn{
+    border: 2px solid #f00037  !important;
+    color: #f00037 !important;
+    background-color: #fff !important;
+    font-weight: 600 !important;
+  
+}
+.cardstyle .btn{
+    position: relative;
+    width: 85%;
+    margin-bottom: 0% !important;
+}
+
+.btn-view{
+    position: relative !important;
+    margin-left: 960px !important;
+    border: none !important;
+    font-weight: 700 !important;
+    background-color: transparent !important;
+    font-size: 20px !important;
+}
+.cardtitle{
+    font-weight: 700 !important;
+}
