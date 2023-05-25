@@ -8,7 +8,7 @@ function SubNavBar() {
   console.log(active);
   console.log(active === "btn1" ? "" : "NavdivButton");
   return (
-    <div style={{ backgroundColor: "bisque", margin: "5vh 10vw" }}>
+    <div style={{ margin: "5vh 10vw" }}>
       <h3>Create Flashcard</h3>
       <div className="Navdiv">
         <button
@@ -25,6 +25,7 @@ function SubNavBar() {
         </button>
       </div>
       <br />
+
       <div>{active === "btn1" ? <CreateNewCard /> : <MyFlashCard />}</div>
     </div>
   );
