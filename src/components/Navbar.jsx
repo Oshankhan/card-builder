@@ -8,13 +8,13 @@ function NavBar() {
         <Container>
           <Navbar.Brand href="#home">
             <img
-              alt=""
-              src="/logo.svg"
+              alt="img"
+              src="https://www.vandelaydesign.com/wp-content/uploads/tutorial-preview-image-4.png"
               width="30"
               height="30"
               className="d-inline-block align-top"
             />{" "}
-            React Bootstrap
+            Card Creater
           </Navbar.Brand>
         </Container>
       </Navbar>

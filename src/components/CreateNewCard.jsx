@@ -1,6 +1,21 @@
 import React, { useState } from "react";
 import "./CreateNewCard.css";
+import { FcUpload } from "react-icons/fc";
 function CreateNewCard() {
+  const [group, setgroup] = useState({
+    groupName: "",
+    groupDetails: "",
+    groupImage: "",
+  });
+
+  const handleGroupChange = (event) => {
+    const { name, value } = event.target;
+    setgroup((previousState) => ({
+      ...previousState,
+      [name]: value,
+    }));
+  };
+
   const [terms, setterms] = useState([
     {
       title: "",
@@ -21,27 +36,57 @@ function CreateNewCard() {
     value[index][event.target.name] = event.target.value;
     setterms(value);
   };
-  console.log(terms);
+  console.log(group.groupName);
   return (
     <>
       <div
-        style={{
-          borderRadius: "10px",
-          backgroundColor: "white",
-          boxShadow: " h-offset v-offset blur spread color",
-        }}
-      >
-        <div style={{ display: "flex" }}>
-          <label>Create Group</label>
-          <input type="text" />
-          <div style={{ border: "1px solid black" }}>
-            <input type="file" id="file" className="custom-file-input" />
-            <label htmlFor="file">Upload Image</label>
+        style={{ height: "10px", width: "10px", backgroundColor: "black" }}
+      ></div>
+      <div className="NewCardCointainer">
+        <div
+          style={{ display: "flex", paddingTop: "20px", paddingLeft: "20px" }}
+        >
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <label style={{ paddingBottom: "5px" }}>Create Group</label>
+            <div style={{ display: "flex" }}>
+              <input
+                className="inputFeild "
+                type="text"
+                name="groupName"
+                onChange={handleGroupChange}
+                value={group.groupName}
+              />
+              <div
+                style={{
+                  border: "1px solid black",
+                  marginLeft: "14px",
+                  borderRadius: "5px",
+                }}
+              >
+                <input
+                  type="file"
+                  id="file"
+                  className="custom-file-input"
+                  value={group.groupImage}
+                  onChange={handleGroupChange}
+                />
+                <label htmlFor="file">
+                  <div style={{ display: "flex" }}>
+                    <FcUpload style={{ margin: "6px 2px 0px 4px" }} />
+                    <p style={{ padding: "0px 5px" }}>Upload Image</p>
+                  </div>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
+        <br />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <label>Add description</label>
           <input
+            name="groupDetails"
+            value={group.groupDetails}
+            onChange={handleGroupChange}
             type="text"
             style={{
               height: "100px",
@@ -51,14 +96,21 @@ function CreateNewCard() {
         </div>
         <br />
       </div>
+
+      {/* This is the secons section of the code */}
+
       <div
+        className="NewCardCointainer"
         style={{
           marginTop: "30px",
           borderRadius: "10px",
-          backgroundColor: "white",
-          boxShadow: " h-offset v-offset blur spread color",
         }}
       >
+        <div
+          className={
+            (group.groupName && group.groupDetails) === "" ? "blur" : ""
+          }
+        />
         <div style={{ display: "flex", flexDirection: "column" }}>
           {terms.map((value, index) => {
             return (
@@ -68,12 +120,14 @@ function CreateNewCard() {
                 <input
                   type="text"
                   name="title"
+                  className="inputFeild"
                   onChange={(event) => handleChange(event, index)}
                 />
                 <label>Enter Term Defination</label>
                 <input
                   type="text"
                   name="des"
+                  className="inputFeild"
                   onChange={(event) => handleChange(event, index)}
                 />
                 <button onClick={() => handleRemoveFields(index)}>

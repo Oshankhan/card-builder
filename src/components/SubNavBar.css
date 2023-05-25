@@ -1,5 +1,11 @@
 .NavdivButton {
   text-decoration: none;
   border: none;
-  background-color: green;
+  background-color: azure;
+  color: darkred;
+}
+
+button {
+  border: none;
+  background-color: azure;
 }
