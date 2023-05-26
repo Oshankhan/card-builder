@@ -1,11 +1,23 @@
-.NavdivButton {
+.Navdiv Button {
   text-decoration: none;
   border: none;
-  background-color: azure;
-  color: darkred;
+  background-color:none;
+  color: #8b8a92;
 }
 
 button {
+  padding: 0px 10px;
   border: none;
-  background-color: azure;
+  background-color: transparent;
+}
+.subnavheading{
+  margin: 5vh 10vw;
+  
+}
+.subnavheading h3{
+  font-size: 20px;
+  font-weight: 800;
+}
+button:hover{
+  color: #f00037 ;
 }

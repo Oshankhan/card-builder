@@ -22,3 +22,38 @@ input[type="file"] {
   opacity: 0.5;
   border-radius: 10px;
 }
+.description{
+  position: relative;
+  height: 100px;
+  width: 70%;
+  margin: 5px 20px;
+  font-size: medium;
+  text-align: start;
+
+}
+.decriptionheading{
+  position: relative;
+  margin-top: -15px;
+  margin-left: 20px;
+  color: rgb(31, 31, 151);
+}
+.creategroup{
+  color: rgb(31, 31, 151);
+  padding-bottom: 5px;
+}
+.createbutton{
+  position: relative;
+  justify-content: center !important;
+  left: 40%;
+  top: 50%;
+  color: #fff;
+  background-color: #f00037;
+  align-items: center !important;
+  margin: 0 auto !important;
+  padding: 5px;
+  margin-top: 10px;
+  width: 100px;
+  text-decoration: none;
+  border: none !important;
+  border-radius: 5px;
+}

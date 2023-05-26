@@ -47,7 +47,7 @@ function CreateNewCard() {
           style={{ display: "flex", paddingTop: "20px", paddingLeft: "20px" }}
         >
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <label style={{ paddingBottom: "5px" }}>Create Group</label>
+            <label className="creategroup" >Create Group</label>
             <div style={{ display: "flex" }}>
               <input
                 className="inputFeild "
@@ -82,16 +82,14 @@ function CreateNewCard() {
         </div>
         <br />
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <label>Add description</label>
+          <label className="decriptionheading">Add description</label>
           <input
             name="groupDetails"
             value={group.groupDetails}
             onChange={handleGroupChange}
             type="text"
-            style={{
-              height: "100px",
-              width: "100px",
-            }}
+            className="description"
+            placeholder="Describe the roles,responsibility,skills required for the job and help candidate understand the role better and doing  job well"
           />
         </div>
         <br />
@@ -139,7 +137,7 @@ function CreateNewCard() {
         </div>
         <button onClick={handleAddItem}>Add item</button>
       </div>
-      <button>Create</button>
+      <button className="createbutton">Create</button>
     </>
   );
 }
