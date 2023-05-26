@@ -8,8 +8,9 @@ function SubNavBar() {
   console.log(active);
   console.log(active === "btn1" ? "" : "NavdivButton");
   return (
-    <div style={{ margin: "5vh 10vw" }}>
+    <div className="subnavheading">
       <h3>Create Flashcard</h3>
+      
       <div className="Navdiv">
         <button
           onClick={() => setactive("btn1")}
@@ -23,6 +24,7 @@ function SubNavBar() {
         >
           My FlashCard
         </button>
+        <hr></hr>
       </div>
       <br />
 
