@@ -39,6 +39,7 @@ function CreateNewCard() {
   console.log(group.groupName);
   return (
     <>
+      {/* This is for new commit */}
       <div className="NewCardCointainer">
         <div
           style={{ display: "flex", paddingTop: "20px", paddingLeft: "20px" }}
