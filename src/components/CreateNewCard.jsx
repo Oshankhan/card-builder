@@ -39,15 +39,12 @@ function CreateNewCard() {
   console.log(group.groupName);
   return (
     <>
-      <div
-        style={{ height: "10px", width: "10px", backgroundColor: "black" }}
-      ></div>
       <div className="NewCardCointainer">
         <div
           style={{ display: "flex", paddingTop: "20px", paddingLeft: "20px" }}
         >
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <label className="creategroup" >Create Group</label>
+            <label className="creategroup">Create Group</label>
             <div style={{ display: "flex" }}>
               <input
                 className="inputFeild "
