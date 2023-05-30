@@ -24,7 +24,7 @@ function SubNavBar() {
         >
           My FlashCard
         </button>
-        <hr></hr>
+        <hr className="bottomline"/>
       </div>
       <br />
 
