@@ -21,7 +21,7 @@ function SubNavBar() {
   return (
     <div className="subnavheading">
       <h3>Create Flashcard</h3>
-      <div className="NavDiv">
+     <div className="Navdiv">
         {arr &&
           arr.map((value, index) => {
             return (
@@ -34,7 +34,8 @@ function SubNavBar() {
               </button>
             );
           })}
-        <hr />
+        <hr className="bottomline"/>
+
       </div>
 
       <br />
