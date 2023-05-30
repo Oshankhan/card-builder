@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./CreateNewCard.css";
 import { FcUpload } from "react-icons/fc";
+import { addCartItem, currentButtonVal } from "../setUp/redux/action";
+import { useSelector, useDispatch } from "react-redux";
+
 function CreateNewCard() {
   const [group, setgroup] = useState({
     groupName: "",
@@ -36,7 +39,16 @@ function CreateNewCard() {
     value[index][event.target.name] = event.target.value;
     setterms(value);
   };
-  console.log(group.groupName);
+  // console.log(group);
+  // console.log(terms);
+
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state);
+  // console.log(data);
+  const submitData = () => {
+    dispatch(addCartItem(group));
+    dispatch(currentButtonVal("My FlashCard"));
+  };
   return (
     <>
       {/* This is for new commit */}
@@ -142,6 +154,10 @@ function CreateNewCard() {
         </div>
         <button className="createbutton">Create</button>
       </div>
+<button className="createbutton" onClick={submitData}>
+        Create
+      </button>
+
     </>
   );
 }
