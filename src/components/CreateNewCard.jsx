@@ -152,7 +152,9 @@ function CreateNewCard() {
           </div>
           <button className="addmore" onClick={handleAddItem}>+ Add more</button>
         </div>
-        <button className="createbutton">Create</button>
+        <div className="createbutton">
+           <button className="createbutton1" >Create</button>
+        </div>
       </div>
 <button className="createbutton" onClick={submitData}>
         Create
