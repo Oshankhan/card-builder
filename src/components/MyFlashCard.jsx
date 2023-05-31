@@ -7,9 +7,12 @@ import { Container } from "react-bootstrap";
 import "./MyFlashCard.css";
 import { useState } from "react";
 import Collapse from "react-bootstrap/Collapse";
+import { useSelector } from "react-redux";
 
 function MyFlashCard() {
   const [open, setOpen] = useState(false);
+  const data = useSelector((state) => state.cards);
+  console.log(data);
 
   return (
     <div className="cardgroup container">
