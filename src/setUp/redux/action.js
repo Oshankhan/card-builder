@@ -5,9 +5,14 @@ export const currentButtonVal = (value) => {
   };
 };
 
-export const addCartItem = (value) => {
+export const addCard = (value) => {
+  // console.log(value);
+  const { group, terms } = value;
   return {
-    type: "ADD_CART_ITEM",
-    payload: value,
+    type: "ADD_CARD",
+    payload: {
+      group,
+      terms,
+    },
   };
 };

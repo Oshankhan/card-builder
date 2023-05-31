@@ -1,164 +1,192 @@
-import React, { useState } from "react";
+import React from "react";
 import "./CreateNewCard.css";
 import { FcUpload } from "react-icons/fc";
-import { addCartItem, currentButtonVal } from "../setUp/redux/action";
-import { useSelector, useDispatch } from "react-redux";
+import { addCard, currentButtonVal } from "../setUp/redux/action";
+import { useDispatch } from "react-redux";
+import { Formik, Field, FieldArray, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 function CreateNewCard() {
-  const [group, setgroup] = useState({
-    groupName: "",
-    groupDetails: "",
-    groupImage: "",
+  const dispatch = useDispatch();
+
+  const handleSubmit = (values) => {
+    // console.log(values);
+    dispatch(currentButtonVal("My FlashCard"));
+
+    dispatch(addCard(values));
+  };
+
+  const validationSchema = Yup.object().shape({
+    group: Yup.object().shape({
+      groupName: Yup.string().required("Please fill the field"),
+      groupDetails: Yup.string().required("Please fill the field"),
+    }),
+    terms: Yup.array().of(
+      Yup.object().shape({
+        title: Yup.string().required("Please fill the field"),
+        des: Yup.string().required("Please fill the field"),
+      })
+    ),
   });
 
-  const handleGroupChange = (event) => {
-    const { name, value } = event.target;
-    setgroup((previousState) => ({
-      ...previousState,
-      [name]: value,
-    }));
-  };
-
-  const [terms, setterms] = useState([
-    {
-      title: "",
-      des: "",
-    },
-  ]);
-  const handleAddItem = () => {
-    const list = [...terms, { title: "", des: "" }];
-    setterms(list);
-  };
-  const handleRemoveFields = (index) => {
-    const values = [...terms];
-    values.splice(index, 1);
-    setterms(values);
-  };
-  const handleChange = (event, index) => {
-    const value = [...terms];
-    value[index][event.target.name] = event.target.value;
-    setterms(value);
-  };
-  // console.log(group);
-  // console.log(terms);
-
-  const dispatch = useDispatch();
-  const data = useSelector((state) => state);
-  // console.log(data);
-  const submitData = () => {
-    dispatch(addCartItem(group));
-    dispatch(currentButtonVal("My FlashCard"));
-  };
   return (
-    <>
-      {/* This is for new commit */}
-      {/* This is for another commit */}
-      <div className="bothcontainer container">
-        <div className="NewCardCointainer">
-          <div
-            style={{ display: "flex", paddingTop: "20px", paddingLeft: "20px" }}
-          >
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <label className="creategroup">Create Group*</label>
-              <div style={{ display: "flex" }}>
-                <input
-                  className="inputFeild "
-                  type="text"
-                  name="groupName"
-                  onChange={handleGroupChange}
-                  value={group.groupName}
-                />
-                <div
-                  style={{
-                    border: "1px solid black",
-                    marginLeft: "14px",
-                    borderRadius: "5px",
-                  }}
-                >
-                  <input
-                    type="file"
-                    id="file"
-                    className="custom-file-input"
-                    value={group.groupImage}
-                    onChange={handleGroupChange}
-                  />
-                  <label htmlFor="file">
-                    <div className="uploadfile">
-                      <FcUpload style={{ margin: "6px 2px 0px 4px" }} />
-                      <p style={{ padding: "0px 5px" }}>Upload Image</p>
+    <Formik
+      initialValues={{
+        group: {
+          groupName: "",
+          groupDetails: "",
+          groupImage: "",
+        },
+        terms: [
+          {
+            title: "",
+            des: "",
+          },
+        ],
+      }}
+      onSubmit={handleSubmit}
+      validationSchema={validationSchema}
+    >
+      {({ values, handleSubmit, handleChange, handleBlur }) => (
+        <form onSubmit={handleSubmit}>
+          <div className="bothcontainer container">
+            <div className="NewCardCointainer">
+              <div
+                style={{
+                  display: "flex",
+                  paddingTop: "20px",
+                  paddingLeft: "20px",
+                }}
+              >
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <label className="creategroup">Create Group*</label>
+                  <div style={{ display: "flex" }}>
+                    <Field
+                      className="inputFeild"
+                      type="text"
+                      name="group.groupName"
+                    />
+                    <div
+                      style={{
+                        border: "1px solid black",
+                        marginLeft: "14px",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      <Field
+                        type="file"
+                        id="file"
+                        className="custom-file-input"
+                        name="group.groupImage"
+                      />
+                      <label htmlFor="file">
+                        <div className="uploadfile">
+                          <FcUpload style={{ margin: "6px 2px 0px 4px" }} />
+                          <p style={{ padding: "0px 5px" }}>Upload Image</p>
+                        </div>
+                      </label>
                     </div>
-                  </label>
+                  </div>
+                  <ErrorMessage
+                    name="group.groupName"
+                    component="div"
+                    className="error-message"
+                  />
+                </div>
+              </div>
+              <br />
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <label className="decriptionheading">Add description</label>
+                <Field
+                  name="group.groupDetails"
+                  type="text"
+                  className="description"
+                  placeholder="Describe the roles,responsibility,skills required for the job and help candidate understand the role better and doing  job well"
+                />
+                <ErrorMessage
+                  name="group.groupDetails"
+                  component="div"
+                  className="error-message"
+                />
+              </div>
+              <br />
+            </div>
+
+            {/* This is the second section of the code */}
+            <div className="secondsection">
+              <div
+                className="NewCardCointainer"
+                style={{
+                  marginTop: "30px",
+                  borderRadius: "10px",
+                }}
+              >
+                <div
+                  className={
+                    (values.group.groupName && values.group.groupDetails) === ""
+                      ? "blur"
+                      : ""
+                  }
+                />
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <FieldArray name="terms">
+                    {({ push, remove }) => (
+                      <>
+                        {values.terms.map((term, index) => (
+                          <div className="indexno" key={index}>
+                            <p>{index + 1}</p>
+                            <label className="term"> Enter Term *</label>
+                            <Field
+                              type="text"
+                              name={`terms[${index}].title`}
+                              className="inputFeild1"
+                            />
+                            <ErrorMessage
+                              name={`terms[${index}].title`}
+                              component="div"
+                              className="error-message"
+                            />
+                            <label className="termdefination">
+                              Enter Definition*
+                            </label>
+                            <Field
+                              type="text"
+                              name={`terms[${index}].des`}
+                              className="inputFeild1"
+                            />
+                            <ErrorMessage
+                              name={`terms[${index}].des`}
+                              component="div"
+                              className="error-message"
+                            />
+                            <button
+                              className="remove"
+                              onClick={() => remove(index)}
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        ))}
+                        <button
+                          className="addmore"
+                          type="button"
+                          onClick={() => push({ title: "", des: "" })}
+                        >
+                          + Add more
+                        </button>
+                      </>
+                    )}
+                  </FieldArray>
                 </div>
               </div>
             </div>
+            <button className="createbutton" type="submit">
+              Create
+            </button>
           </div>
-          <br />
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <label className="decriptionheading">Add description</label>
-            <input
-              name="groupDetails"
-              value={group.groupDetails}
-              onChange={handleGroupChange}
-              type="text"
-              className="description"
-              placeholder="Describe the roles,responsibility,skills required for the job and help candidate understand the role better and doing  job well"
-            />
-          </div>
-          <br />
-        </div>
-
-        {/* This is the secons section of the code */}
-        <div className="secondsection">
-          <div
-            className="NewCardCointainer"
-            style={{
-              marginTop: "30px",
-              borderRadius: "10px",
-            }}
-          >
-            <div
-              className={
-                (group.groupName && group.groupDetails) === "" ? "blur" : ""
-              }
-            />
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              {terms.map((value, index) => {
-                return (
-                  <div className="indexno" key={index}>
-                    <p>{index + 1}</p>
-                   
-                    <label className="term"> Enter Term *</label>
-                  
-                    <input
-                      type="text"
-                      name="title"
-                      className="inputFeild1"
-                      onChange={(event) => handleChange(event, index)}
-                    />
-                    <label  className="termdefination">Enter Defination*</label>
-                    <input
-                      type="text"
-                      name="des"
-                      className="inputFeild1"
-                      onChange={(event) => handleChange(event, index)}
-                    />
-                    <button className="remove" onClick={() => handleRemoveFields(index)}>
-                      Remove
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <button className="addmore" onClick={handleAddItem}>+ Add more</button>
-        </div>
-        <button className="createbutton">Create</button>
-      </div>
-<button className="createbutton" onClick={submitData}>
-        Create
-      </button>
-
-    </>
+        </form>
+      )}
+    </Formik>
   );
 }
 

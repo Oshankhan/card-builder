@@ -10,8 +10,8 @@ function SubNavBar() {
 
   const dispatch = useDispatch();
 
-  const value = useSelector((state) => state);
-  // console.log(value.reducer.buttonVal);
+  const buttonVal = useSelector((state) => state.details.buttonVal);
+  // console.log(buttonVal);
 
   const setButton = (value) => {
     setactive(value);
@@ -21,7 +21,7 @@ function SubNavBar() {
   return (
     <div className="subnavheading">
       <h3>Create Flashcard</h3>
-     <div className="Navdiv">
+      <div className="Navdiv">
         {arr &&
           arr.map((value, index) => {
             return (
@@ -34,18 +34,15 @@ function SubNavBar() {
               </button>
             );
           })}
-        <hr className="bottomline"/>
-
+        <hr className="bottomline" />
       </div>
 
       <br />
 
       <div>
         {(() => {
-          switch (value.reducer.buttonVal) {
+          switch (buttonVal) {
             case "Create New":
-              console.log(value.reducer.buttonVal);
-
               return <CreateNewCard />;
 
             case "My FlashCard":
@@ -59,14 +56,6 @@ function SubNavBar() {
           }
         })()}
       </div>
-
-      {/* <div>
-        {active === value.reducer.buttonVal ? (
-          <CreateNewCard />
-        ) : (
-          <MyFlashCard />
-        )}
-      </div> */}
     </div>
   );
 }
