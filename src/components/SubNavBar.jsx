@@ -4,7 +4,7 @@ import CreateNewCard from "./CreateNewCard";
 import MyFlashCard from "./MyFlashCard";
 import { useDispatch, useSelector } from "react-redux";
 import { currentButtonVal } from "../setUp/redux/action";
-
+import ViewCardPage from "./ViewCardPage/ViewCardPage";
 function SubNavBar() {
   const [active, setactive] = useState("Create New");
 
@@ -47,6 +47,9 @@ function SubNavBar() {
 
             case "My FlashCard":
               return <MyFlashCard />;
+
+            case "ViewCardPage":
+              return <ViewCardPage />;
             default:
               return (
                 <div>

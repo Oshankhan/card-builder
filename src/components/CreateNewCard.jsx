@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CreateNewCard.css";
 import { FcUpload } from "react-icons/fc";
+import { RiArrowDropDownLine } from "react-icons/ri";
 import { addCard, currentButtonVal } from "../setUp/redux/action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik, Field, FieldArray, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 function CreateNewCard() {
   const dispatch = useDispatch();
-
+  const groupName = useSelector((state) => state.cards);
+  console.log(groupName);
   const handleSubmit = (values) => {
     // console.log(values);
     dispatch(currentButtonVal("My FlashCard"));
@@ -28,7 +30,10 @@ function CreateNewCard() {
       })
     ),
   });
-
+  const [isDropDownActive, setDropDownActive] = useState(false);
+  const dropDownActive = () => {
+    setDropDownActive(!isDropDownActive);
+  };
   return (
     <Formik
       initialValues={{
@@ -66,6 +71,16 @@ function CreateNewCard() {
                       type="text"
                       name="group.groupName"
                     />
+                    {groupName !== "" && (
+                      <>
+                        <div
+                          className={isDropDownActive ? "dropDownClass" : ""}
+                        ></div>
+                        <div className="dropDown">
+                          <RiArrowDropDownLine onClick={dropDownActive} />
+                        </div>
+                      </>
+                    )}
                     <div
                       style={{
                         border: "1px solid black",

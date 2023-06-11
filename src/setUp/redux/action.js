@@ -5,6 +5,13 @@ export const currentButtonVal = (value) => {
   };
 };
 
+export const btnIndexVal = (value) => {
+  return {
+    type: "CURRENT_INDX_VALUE",
+    payload: value,
+  };
+};
+
 export const addCard = (value) => {
   // console.log(value);
   const { group, terms } = value;
