@@ -1,8 +1,9 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LeftComponent from "./Sub-Component/LeftComponent";
 import MiddleComponent from "./Sub-Component/MiddleComponent";
 import RightComponent from "./Sub-Component/RightComponent";
 import { BiArrowBack } from "react-icons/bi";
+import { currentButtonVal } from "../../setUp/redux/action";
 
 function ViewCardPage() {
   const cards = useSelector((state) => state.cards);
@@ -11,11 +12,16 @@ function ViewCardPage() {
 
   const detials = cards.itemList;
   const indexValue = index.indexValue;
-
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(currentButtonVal("My FlashCard"));
+  };
   return (
     <>
       <div style={{ display: "flex" }}>
-        <BiArrowBack />
+        <div onClick={handleClick}>
+          <BiArrowBack />
+        </div>
 
         <h3>{detials[indexValue].group.groupName} </h3>
       </div>
