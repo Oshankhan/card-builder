@@ -13,7 +13,9 @@ function SubContainer() {
 
   const [seeMore, setSeeMore] = useState(6);
   const data = useSelector((state) => state.cards);
-  console.log(data.itemList.length);
+  // console.log(data.itemList.length);
+  const [values, setvalues] = useState(data.itemList);
+  console.log(values);
   const seeMoreoption = () => {
     setSeeMore(data.itemList.length);
   };
@@ -28,37 +30,34 @@ function SubContainer() {
         <>Look Like you haven't made a group </>
       ) : (
         <>
-          {Object.keys(data.itemList)
-            .slice(0, seeMore)
-            .map((values, index) => {
-              return (
-                <>
-                  <div className="content" style={{ display: "flex" }}>
-                    <Container>
-                      <Row>
-                        <Col md={4}>
-                          <Card className="cardstyle">
-                            <Card.Img className="Cardimg" src=" " />
-                            <Card.Body className="cardbody">
-                              <Card.Title className="cardtitle">
-                                Gruop-Name
-                              </Card.Title>
-                              <Card.Text>Group-Details</Card.Text>
-                              <Button
-                                className="btn"
-                                onClick={() => showViewCardPage(index)}
-                              >
-                                View Cards
-                              </Button>
-                            </Card.Body>
-                          </Card>
-                        </Col>
-                      </Row>
-                    </Container>
-                  </div>
-                </>
-              );
-            })}
+          {values.slice(0, seeMore).map((values, index) => {
+            console.log(values.group.groupName);
+            return (
+              <div className="content" style={{ display: "flex" }} key={index}>
+                <Container>
+                  <Row>
+                    <Col md={4}>
+                      <Card className="cardstyle">
+                        <Card.Img className="Cardimg" src=" " />
+                        <Card.Body className="cardbody">
+                          <Card.Title className="cardtitle">
+                            {values.group.groupName}
+                          </Card.Title>
+                          <Card.Text>{values.group.groupDetails}</Card.Text>
+                          <Button
+                            className="btn"
+                            onClick={() => showViewCardPage(index)}
+                          >
+                            View Cards
+                          </Button>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+            );
+          })}
         </>
       )}
       <button onClick={seeMoreoption}>see more</button>

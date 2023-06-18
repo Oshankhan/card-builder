@@ -27,7 +27,7 @@ function SubNavBar() {
             return (
               <button
                 key={index}
-                className={active === value ? "NavdivButton" : ""}
+                className={buttonVal === value ? "Navdiv" : ""}
                 onClick={() => setButton(value)}
               >
                 {value}

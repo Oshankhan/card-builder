@@ -10,7 +10,7 @@ import * as Yup from "yup";
 function CreateNewCard() {
   const dispatch = useDispatch();
   const groupName = useSelector((state) => state.cards);
-  console.log(groupName);
+  // console.log(groupName);
   const handleSubmit = (values) => {
     // console.log(values);
     dispatch(currentButtonVal("My FlashCard"));

@@ -1,6 +1,7 @@
 const intialValues = {
   buttonVal: "Create New",
   indexValue: 0,
+  termsValue: 0,
 };
 
 export const reducer = (state = intialValues, action) => {
@@ -15,6 +16,11 @@ export const reducer = (state = intialValues, action) => {
       return {
         ...state,
         indexValue: action.payload,
+      };
+    case "TERMS_INDEX":
+      return {
+        ...state,
+        termsValue: action.payload,
       };
     default:
       return state;

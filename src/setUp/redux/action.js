@@ -23,3 +23,10 @@ export const addCard = (value) => {
     },
   };
 };
+
+export const termsIndex = (value) => {
+  return {
+    type: "TERMS_INDEX",
+    payload: value,
+  };
+};
