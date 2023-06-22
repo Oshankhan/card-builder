@@ -39,7 +39,34 @@ export const listReducer = (state = initialState, action) => {
         ...state,
         itemList: [...state.itemList, action.payload],
       };
+    // case "UPDATE_CARD": {
+    //   const { cardIndex, updatedData } = action.payload;
+    //   const updatedCards = [...state.itemList];
+    //   updatedCards[cardIndex] = { ...updatedCards[cardIndex], ...updatedData };
 
+    //   return { ...state, cards: updatedCards };
+    // }
+    case "UPDATE_DETAILS": {
+      const { index, groupDetail } = action.payload;
+
+      const updatedItemList = state.itemList.map((item, itemIndex) => {
+        if (itemIndex === index) {
+          return {
+            ...item,
+            group: {
+              ...item.group,
+              groupDetails: groupDetail,
+            },
+          };
+        }
+        return item;
+      });
+      console.log(updatedItemList);
+      return {
+        ...state,
+        itemList: updatedItemList,
+      };
+    }
     default:
       return state;
   }

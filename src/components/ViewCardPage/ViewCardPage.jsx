@@ -8,7 +8,7 @@ import { currentButtonVal } from "../../setUp/redux/action";
 function ViewCardPage() {
   const cards = useSelector((state) => state.cards);
   const index = useSelector((state) => state.details);
-  console.log(index);
+  // console.log(index);
 
   const detials = cards.itemList;
   const indexValue = index.indexValue;

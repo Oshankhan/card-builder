@@ -30,3 +30,17 @@ export const termsIndex = (value) => {
     payload: value,
   };
 };
+export const updateCard = (cardIndex, updatedData) => ({
+  type: "UPDATE_CARD",
+  payload: { cardIndex, updatedData },
+});
+
+export const upDateDetail = (index, groupDetail) => {
+  return {
+    type: "UPDATE_DETAILS",
+    payload: {
+      index,
+      groupDetail,
+    },
+  };
+};

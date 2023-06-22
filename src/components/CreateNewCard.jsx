@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import "./CreateNewCard.css";
 import { FcUpload } from "react-icons/fc";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { addCard, currentButtonVal } from "../setUp/redux/action";
+import {
+  addCard,
+  btnIndexVal,
+  currentButtonVal,
+  upDateDetail,
+} from "../setUp/redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Field, FieldArray, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -10,6 +15,10 @@ import * as Yup from "yup";
 function CreateNewCard() {
   const dispatch = useDispatch();
   const groupName = useSelector((state) => state.cards);
+
+  const itemList = groupName.itemList;
+  const indexOfGroup = useSelector((state) => state.details.indexValue);
+
   // console.log(groupName);
   const handleSubmit = (values) => {
     // console.log(values);
@@ -33,6 +42,15 @@ function CreateNewCard() {
   const [isDropDownActive, setDropDownActive] = useState(false);
   const dropDownActive = () => {
     setDropDownActive(!isDropDownActive);
+  };
+  const handleSelectedGroup = (index) => {
+    dispatch(btnIndexVal(index));
+    setDropDownActive(false);
+  };
+
+  const handleDiscriptionChange = (event) => {
+    const value = event.target.value;
+    dispatch(upDateDetail(indexOfGroup, value));
   };
   return (
     <Formik
@@ -75,7 +93,19 @@ function CreateNewCard() {
                       <>
                         <div
                           className={isDropDownActive ? "dropDownClass" : ""}
-                        ></div>
+                        >
+                          {isDropDownActive &&
+                            itemList.map((values, index) => {
+                              return (
+                                <div
+                                  key={index}
+                                  onClick={() => handleSelectedGroup(index)}
+                                >
+                                  {values.group.groupName}
+                                </div>
+                              );
+                            })}
+                        </div>
                         <div className="dropDown">
                           <RiArrowDropDownLine onClick={dropDownActive} />
                         </div>
@@ -110,20 +140,52 @@ function CreateNewCard() {
                 </div>
               </div>
               <br />
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <label className="decriptionheading">Add description</label>
-                <Field
-                  name="group.groupDetails"
-                  type="text"
-                  className="description"
-                  placeholder="Describe the roles,responsibility,skills required for the job and help candidate understand the role better and doing  job well"
-                />
-                <ErrorMessage
-                  name="group.groupDetails"
-                  component="div"
-                  className="error-message"
-                />
-              </div>
+              {(() => {
+                switch (itemList.length) {
+                  case 1:
+                    console.log(" Into section 2");
+                    return (
+                      <div style={{ display: "flex", flexDirection: "column" }}>
+                        <label className="decriptionheading">
+                          Add description
+                        </label>
+                        <input
+                          value={itemList[indexOfGroup].group.groupDetails}
+                          onChange={handleDiscriptionChange}
+                          name="group.groupDetails"
+                          type="text"
+                          className="description"
+                          placeholder="Describe the roles,responsibility,skills required for the job and help candidate understand the role better and doing  job well"
+                        />
+                      </div>
+                    );
+
+                  default:
+                    return (
+                      <>
+                        <div
+                          style={{ display: "flex", flexDirection: "column" }}
+                        >
+                          <label className="decriptionheading">
+                            Add description
+                          </label>
+                          <Field
+                            name="group.groupDetails"
+                            type="text"
+                            className="description"
+                            placeholder="Describe the roles,responsibility,skills required for the job and help candidate understand the role better and doing  job well"
+                          />
+                          <ErrorMessage
+                            name="group.groupDetails"
+                            component="div"
+                            className="error-message"
+                          />
+                        </div>
+                      </>
+                    );
+                }
+              })()}
+
               <br />
             </div>
 
