@@ -41,7 +41,7 @@ input[type="file"] {
   color: rgb(31, 31, 151);
   padding-bottom: 5px;
 }
-.bothcontainer > .createbutton {
+.createbutton {
   position: relative;
   justify-content: center !important;
   left: 40%;

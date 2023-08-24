@@ -34,7 +34,7 @@ export const listReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_CARD":
       // const payload = action.payload;
-      // console.log(payload);
+      console.log(action.payload);
       return {
         ...state,
         itemList: [...state.itemList, action.payload],

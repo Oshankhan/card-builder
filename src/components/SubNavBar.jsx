@@ -1,9 +1,10 @@
 import "./SubNavBar.css";
-import CreateNewCard from "./CreateNewCard";
+// import CreateNewCard from "./CreateNewCard";
 import MyFlashCard from "./MyFlashCard";
 import { useDispatch, useSelector } from "react-redux";
 import { currentButtonVal } from "../setUp/redux/action";
 import ViewCardPage from "./ViewCardPage/ViewCardPage";
+import CreateAndEdit from "./CreateAndEdit/CreateAndEdit";
 function SubNavBar() {
   const dispatch = useDispatch();
 
@@ -39,7 +40,7 @@ function SubNavBar() {
         {(() => {
           switch (buttonVal) {
             case "Create New":
-              return <CreateNewCard />;
+              return <CreateAndEdit />;
 
             case "My FlashCard":
               return <MyFlashCard />;
@@ -49,7 +50,7 @@ function SubNavBar() {
             default:
               return (
                 <div>
-                  <CreateNewCard />
+                  <CreateAndEdit />
                 </div>
               );
           }

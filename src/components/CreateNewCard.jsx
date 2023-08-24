@@ -19,14 +19,14 @@ function CreateNewCard() {
   const itemList = groupName.itemList;
   const indexOfGroup = useSelector((state) => state.details.indexValue);
 
-  // console.log(groupName);
+  console.log(groupName);
   const handleSubmit = (values) => {
     // console.log(values);
     dispatch(currentButtonVal("My FlashCard"));
 
     dispatch(addCard(values));
   };
-
+  const [newGroupPusher, setNewGroupPusher] = useState(false);
   const validationSchema = Yup.object().shape({
     group: Yup.object().shape({
       groupName: Yup.string().required("Please fill the field"),
@@ -46,6 +46,7 @@ function CreateNewCard() {
   const handleSelectedGroup = (index) => {
     dispatch(btnIndexVal(index));
     setDropDownActive(false);
+    setNewGroupPusher(false);
   };
 
   const handleDiscriptionChange = (event) => {
@@ -89,22 +90,42 @@ function CreateNewCard() {
                       type="text"
                       name="group.groupName"
                     />
-                    {groupName !== "" && (
+                    {/* ya create new pe click kia hai  */}
+                    {/* aysa variable jo push kar dega group ke bhar */}
+                    {itemList.length === 0 || newGroupPusher === true ? (
+                      // isem hmko new group ki logic likhni hai
+                      <></>
+                    ) : (
                       <>
+                        {/* agar hai group */}
                         <div
                           className={isDropDownActive ? "dropDownClass" : ""}
                         >
-                          {isDropDownActive &&
-                            itemList.map((values, index) => {
-                              return (
-                                <div
-                                  key={index}
-                                  onClick={() => handleSelectedGroup(index)}
-                                >
-                                  {values.group.groupName}
+                          {isDropDownActive === false ? (
+                            <></>
+                          ) : (
+                            <>
+                              <div>
+                                <div onClick={() => setNewGroupPusher(true)}>
+                                  --Create Group--
                                 </div>
-                              );
-                            })}
+                                {itemList.map((values, index) => {
+                                  return (
+                                    <div key={index}>
+                                      <p
+                                        onClick={() =>
+                                          handleSelectedGroup(index)
+                                        }
+                                      >
+                                        {values.group.groupName}
+                                      </p>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                              {/* diplay ki logic */}
+                            </>
+                          )}
                         </div>
                         <div className="dropDown">
                           <RiArrowDropDownLine onClick={dropDownActive} />
@@ -145,19 +166,100 @@ function CreateNewCard() {
                   case 1:
                     console.log(" Into section 2");
                     return (
-                      <div style={{ display: "flex", flexDirection: "column" }}>
-                        <label className="decriptionheading">
-                          Add description
-                        </label>
-                        <input
-                          value={itemList[indexOfGroup].group.groupDetails}
-                          onChange={handleDiscriptionChange}
-                          name="group.groupDetails"
-                          type="text"
-                          className="description"
-                          placeholder="Describe the roles,responsibility,skills required for the job and help candidate understand the role better and doing  job well"
-                        />
-                      </div>
+                      <>
+                        <div
+                          style={{ display: "flex", flexDirection: "column" }}
+                        >
+                          <label className="decriptionheading">
+                            Add description
+                          </label>
+                          <input
+                            value={itemList[indexOfGroup].group.groupDetails}
+                            onChange={handleDiscriptionChange}
+                            name="group.groupDetails"
+                            type="text"
+                            className="description"
+                            placeholder="Describe the roles,responsibility,skills required for the job and help candidate understand the role better and doing  job well"
+                          />
+                        </div>
+                        <div className="secondsection">
+                          <div
+                            className="NewCardCointainer"
+                            style={{
+                              marginTop: "30px",
+                              borderRadius: "10px",
+                            }}
+                          >
+                            {/* <div
+                              className={
+                                (values.group.groupName &&
+                                  values.group.groupDetails) === ""
+                                  ? "blur"
+                                  : ""
+                              }
+                            /> */}
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                              }}
+                            >
+                              <FieldArray name="terms">
+                                {({ push, remove }) => (
+                                  <>
+                                    {values.terms.map((term, index) => (
+                                      <div className="indexno" key={index}>
+                                        <p>{index + 1}</p>
+                                        <label className="term">
+                                          {" "}
+                                          Enter Term *
+                                        </label>
+                                        <input
+                                          value={
+                                            itemList[indexOfGroup].terms[0]
+                                              .title
+                                          }
+                                          type="text"
+                                          name={`terms[${index}].title`}
+                                          className="inputFeild1"
+                                        />
+
+                                        <label className="termdefination">
+                                          Enter Definition*
+                                        </label>
+                                        <Field
+                                          type="text"
+                                          name={`terms[${index}].des`}
+                                          className="inputFeild1"
+                                        />
+
+                                        <button
+                                          className="remove"
+                                          onClick={() => remove(index)}
+                                        >
+                                          Remove
+                                        </button>
+                                      </div>
+                                    ))}
+                                    <button
+                                      className="addmore"
+                                      type="button"
+                                      onClick={() =>
+                                        push({ title: "", des: "" })
+                                      }
+                                    >
+                                      + Add more
+                                    </button>
+                                  </>
+                                )}
+                              </FieldArray>
+                            </div>
+                          </div>
+                        </div>
+                        <button className="createbutton" type="submit">
+                          Create
+                        </button>
+                      </>
                     );
 
                   default:
@@ -181,85 +283,94 @@ function CreateNewCard() {
                             className="error-message"
                           />
                         </div>
+                        <div className="secondsection">
+                          <div
+                            className="NewCardCointainer"
+                            style={{
+                              marginTop: "30px",
+                              borderRadius: "10px",
+                            }}
+                          >
+                            {/* <div
+                              className={
+                                (values.group.groupName &&
+                                  values.group.groupDetails) === ""
+                                  ? "blur"
+                                  : ""
+                              }
+                            /> */}
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                              }}
+                            >
+                              <FieldArray name="terms">
+                                {({ push, remove }) => (
+                                  <>
+                                    {values.terms.map((term, index) => (
+                                      <div className="indexno" key={index}>
+                                        <p>{index + 1}</p>
+                                        <label className="term">
+                                          {" "}
+                                          Enter Term *
+                                        </label>
+                                        <Field
+                                          type="text"
+                                          name={`terms[${index}].title`}
+                                          className="inputFeild1"
+                                        />
+                                        <ErrorMessage
+                                          name={`terms[${index}].title`}
+                                          component="div"
+                                          className="error-message"
+                                        />
+                                        <label className="termdefination">
+                                          Enter Definition*
+                                        </label>
+                                        <Field
+                                          type="text"
+                                          name={`terms[${index}].des`}
+                                          className="inputFeild1"
+                                        />
+                                        <ErrorMessage
+                                          name={`terms[${index}].des`}
+                                          component="div"
+                                          className="error-message"
+                                        />
+                                        <button
+                                          className="remove"
+                                          onClick={() => remove(index)}
+                                        >
+                                          Remove
+                                        </button>
+                                      </div>
+                                    ))}
+                                    <button
+                                      className="addmore"
+                                      type="button"
+                                      onClick={() =>
+                                        push({ title: "", des: "" })
+                                      }
+                                    >
+                                      + Add more
+                                    </button>
+                                  </>
+                                )}
+                              </FieldArray>
+                            </div>
+                          </div>
+                        </div>
+                        <button className="createbutton" type="submit">
+                          Create
+                        </button>
                       </>
                     );
                 }
               })()}
-
-              <br />
             </div>
 
             {/* This is the second section of the code */}
-            <div className="secondsection">
-              <div
-                className="NewCardCointainer"
-                style={{
-                  marginTop: "30px",
-                  borderRadius: "10px",
-                }}
-              >
-                <div
-                  className={
-                    (values.group.groupName && values.group.groupDetails) === ""
-                      ? "blur"
-                      : ""
-                  }
-                />
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <FieldArray name="terms">
-                    {({ push, remove }) => (
-                      <>
-                        {values.terms.map((term, index) => (
-                          <div className="indexno" key={index}>
-                            <p>{index + 1}</p>
-                            <label className="term"> Enter Term *</label>
-                            <Field
-                              type="text"
-                              name={`terms[${index}].title`}
-                              className="inputFeild1"
-                            />
-                            <ErrorMessage
-                              name={`terms[${index}].title`}
-                              component="div"
-                              className="error-message"
-                            />
-                            <label className="termdefination">
-                              Enter Definition*
-                            </label>
-                            <Field
-                              type="text"
-                              name={`terms[${index}].des`}
-                              className="inputFeild1"
-                            />
-                            <ErrorMessage
-                              name={`terms[${index}].des`}
-                              component="div"
-                              className="error-message"
-                            />
-                            <button
-                              className="remove"
-                              onClick={() => remove(index)}
-                            >
-                              Remove
-                            </button>
-                          </div>
-                        ))}
-                        <button
-                          className="addmore"
-                          type="button"
-                          onClick={() => push({ title: "", des: "" })}
-                        >
-                          + Add more
-                        </button>
-                      </>
-                    )}
-                  </FieldArray>
-                </div>
-              </div>
-            </div>
-            <button className="createbutton" type="submit">
-              Create
-            </button>
           </div>
         </form>
       )}
