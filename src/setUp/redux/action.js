@@ -5,6 +5,10 @@ export const currentButtonVal = (value) => {
   };
 };
 
+export const newGroupButtonClick = (value) => {
+  return { type: "NEW_GROUP_BUTTON", payload: value };
+};
+
 export const btnIndexVal = (value) => {
   return {
     type: "CURRENT_INDX_VALUE",
@@ -13,7 +17,6 @@ export const btnIndexVal = (value) => {
 };
 
 export const addCard = (value) => {
-  // console.log(value);
   const { group, terms } = value;
   return {
     type: "ADD_CARD",
@@ -30,10 +33,6 @@ export const termsIndex = (value) => {
     payload: value,
   };
 };
-export const updateCard = (cardIndex, updatedData) => ({
-  type: "UPDATE_CARD",
-  payload: { cardIndex, updatedData },
-});
 
 export const upDateDetail = (index, groupDetail) => {
   return {
@@ -41,6 +40,17 @@ export const upDateDetail = (index, groupDetail) => {
     payload: {
       index,
       groupDetail,
+    },
+  };
+};
+
+export const updateDefination = (value, groupSelected, indexForDes) => {
+  return {
+    type: "UPDATE_DEF",
+    payload: {
+      groupIndex: groupSelected,
+      termIndex: indexForDes,
+      newDefination: value,
     },
   };
 };

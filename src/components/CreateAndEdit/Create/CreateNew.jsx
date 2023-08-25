@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addCard, currentButtonVal } from "../../../setUp/redux/action";
+import {
+  addCard,
+  currentButtonVal,
+  newGroupButtonClick,
+} from "../../../setUp/redux/action";
 import "./CreateNew.css";
 
 const CreateNew = () => {
@@ -17,9 +21,14 @@ const CreateNew = () => {
       },
     ],
   });
-  const dispatch = useDispatch();
 
-  console.log(initialValues);
+  const dispatch = useDispatch();
+  const handleSubmit = () => {
+    dispatch(addCard(initialValues));
+    dispatch(currentButtonVal("My FlashCard"));
+    dispatch(newGroupButtonClick(false));
+  };
+
   const handleGroupChange = (event) => {
     const { name, value } = event.target;
 
@@ -73,10 +82,6 @@ const CreateNew = () => {
     }
   };
 
-  const handleSubmit = () => {
-    dispatch(addCard(initialValues));
-    dispatch(currentButtonVal("My FlashCard"));
-  };
   return (
     <div>
       <div>

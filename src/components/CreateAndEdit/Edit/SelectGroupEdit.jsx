@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { itemList } from "../../../data";
+import { useSelector } from "react-redux";
+import Editing from "./Editing";
 
 const SelectGoupEdit = ({ groupSelected }) => {
+  const itemList = useSelector((state) => state.cards.itemList);
+
   const [setSelectedTerm, setsetSelectedTerm] = useState("");
   const [indexForDes, setIndexForDes] = useState(0);
   const [isEditing, setIsEditing] = useState(false);
@@ -10,6 +13,10 @@ const SelectGoupEdit = ({ groupSelected }) => {
     const selectedGroupValue = event.target.value;
     setsetSelectedTerm(selectedGroupValue);
     setIndexForDes(event.target.selectedIndex);
+  };
+
+  const handleSaving = (value) => {
+    setIsEditing(value);
   };
 
   return (
@@ -28,31 +35,27 @@ const SelectGoupEdit = ({ groupSelected }) => {
               })}
           </select>
           <label>Defination</label>
+
           {!isEditing ? (
             <>
               <div>{itemList[groupSelected].terms[indexForDes].des}</div>
+              <button
+                onClick={() => {
+                  setIsEditing(!isEditing);
+                }}
+                disabled={isEditing ? true : false}
+              >
+                Edit
+              </button>
+              <button disabled={true}>save</button>
             </>
           ) : (
-            <>
-              <br />
-              <label>Defination</label>
-              <input type="text" />
-            </>
+            <Editing
+              groupSelected={groupSelected}
+              indexForDes={indexForDes}
+              handleSaving={handleSaving}
+            />
           )}
-          <button
-            onClick={() => setIsEditing(!isEditing)}
-            disabled={isEditing ? true : false}
-          >
-            {!isEditing ? "Edit" : "Editing"}
-          </button>
-          <button
-            disabled={!isEditing ? true : false}
-            onClick={() => {
-              setIsEditing(!isEditing);
-            }}
-          >
-            save
-          </button>
         </>
       ) : (
         <>Empty</>

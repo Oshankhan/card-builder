@@ -2,6 +2,7 @@ const intialValues = {
   buttonVal: "Create New",
   indexValue: 0,
   termsValue: 0,
+  createNewButton: true,
 };
 
 export const reducer = (state = intialValues, action) => {
@@ -22,6 +23,12 @@ export const reducer = (state = intialValues, action) => {
         ...state,
         termsValue: action.payload,
       };
+    case "NEW_GROUP_BUTTON":
+      return {
+        ...state,
+        createNewButton: action.payload,
+      };
+
     default:
       return state;
   }
@@ -33,19 +40,10 @@ const initialState = {
 export const listReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_CARD":
-      // const payload = action.payload;
-      console.log(action.payload);
       return {
         ...state,
         itemList: [...state.itemList, action.payload],
       };
-    // case "UPDATE_CARD": {
-    //   const { cardIndex, updatedData } = action.payload;
-    //   const updatedCards = [...state.itemList];
-    //   updatedCards[cardIndex] = { ...updatedCards[cardIndex], ...updatedData };
-
-    //   return { ...state, cards: updatedCards };
-    // }
     case "UPDATE_DETAILS": {
       const { index, groupDetail } = action.payload;
 
@@ -61,12 +59,42 @@ export const listReducer = (state = initialState, action) => {
         }
         return item;
       });
+
       console.log(updatedItemList);
       return {
         ...state,
         itemList: updatedItemList,
       };
     }
+    case "UPDATE_DEF": {
+      const { groupIndex, termIndex, newDefination } = action.payload;
+
+      const updatedItemList = state.itemList.map((item, itemIndex) => {
+        if (itemIndex === groupIndex) {
+          const updatedTerms = item.terms.map((term, tIndex) => {
+            if (tIndex === termIndex) {
+              return {
+                ...term,
+                des: newDefination,
+              };
+            }
+            return term;
+          });
+
+          return {
+            ...item,
+            terms: updatedTerms,
+          };
+        }
+        return item;
+      });
+
+      return {
+        ...state,
+        itemList: updatedItemList,
+      };
+    }
+
     default:
       return state;
   }

@@ -1,8 +1,14 @@
-import { createStore } from "redux";
-import rootReducer from "./combineReducer";
+import { createStore, applyMiddleware } from "redux";
+import { combineReducers } from "redux";
+import { reducer, listReducer } from "./reducer";
 
-const store = createStore(
-  rootReducer,
-  +window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const initialState = {};
+
+const rootReducer = combineReducers({
+  details: reducer,
+  cards: listReducer,
+});
+
+const store = createStore(rootReducer, initialState);
+
 export default store;

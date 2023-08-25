@@ -13,9 +13,9 @@ function SubContainer() {
 
   const [seeMore, setSeeMore] = useState(6);
   const data = useSelector((state) => state.cards);
-  // console.log(data.itemList.length);
+
   const [values, setvalues] = useState(data.itemList);
-  console.log(values);
+
   const seeMoreoption = () => {
     setSeeMore(data.itemList.length);
   };
@@ -31,7 +31,6 @@ function SubContainer() {
       ) : (
         <>
           {values.slice(0, seeMore).map((values, index) => {
-            console.log(values.group.groupName);
             return (
               <div className="content" style={{ display: "flex" }} key={index}>
                 <Container>

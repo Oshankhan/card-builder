@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import SelectGroupEdit from "../Edit/SelectGroupEdit.jsx";
-import { itemList } from "../../../data.js";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { newGroupButtonClick } from "../../../setUp/redux/action.js";
 
 const GroupSelect = () => {
   const [selectedGroup, setSelectedGroup] = useState("");
   const [indexItem, setIndexItem] = useState(-1);
+  const dispatch = useDispatch();
+  const itemList = useSelector((state) => state.cards.itemList);
 
-  const item = useSelector((state) => state.cards);
-  console.log(item);
   const handleGroupSelect = (event) => {
     const selectedGroupValue = event.target.value;
+
     setSelectedGroup(selectedGroupValue);
-    if (selectedGroupValue === "") {
+
+    if (selectedGroupValue === "Create New Group") {
+      dispatch(newGroupButtonClick(true));
       setIndexItem(-1);
     } else {
-      setIndexItem(event.target.selectedIndex - 1);
+      setIndexItem(event.target.selectedIndex - 2);
     }
   };
 
@@ -23,7 +26,8 @@ const GroupSelect = () => {
     <div>
       <label>Select Group:</label>
       <select onChange={handleGroupSelect} value={selectedGroup}>
-        <option>Create New Group</option>
+        <option value="">Select an option</option>
+        <option value="Create New Group">Create New Group</option>
         {itemList &&
           itemList.map((item, index) => (
             <option key={index} value={item.group.groupName}>
