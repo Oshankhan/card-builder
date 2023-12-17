@@ -123,6 +123,7 @@ const CreateNew = () => {
                       name="title"
                       value={term.title}
                       className="inputFeild1"
+                      required
                     />
                 </div>
                 <div className="term-parent2">
@@ -134,6 +135,7 @@ const CreateNew = () => {
                       name="des"
                       value={term.des}
                       className="inputFeild1"
+                      required
                     />
                 </div>
                 <div className="term-parent2">
@@ -145,7 +147,7 @@ const CreateNew = () => {
             ))}
         <br />
         <br />
-        <button className="add-more" onClick={addNewTerm}>+ Add more </button>
+        <button className="add-more" onClick={addNewTerm}>+ Add more </button> 
       </div>
 
         <br />

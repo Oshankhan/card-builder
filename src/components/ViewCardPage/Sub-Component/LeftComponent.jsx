@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 import { useDispatch, useSelector } from "react-redux";
 import { termsIndex } from "../../../setUp/redux/action";
+import "./LeftComponent.css"
 
 function LeftComponent() {
   const data = useSelector((state) => state.cards);

@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import "./ViewCardPage.css";
 import LeftComponent from "./Sub-Component/LeftComponent";
 import MiddleComponent from "./Sub-Component/MiddleComponent";
 import RightComponent from "./Sub-Component/RightComponent";
@@ -18,7 +19,7 @@ function ViewCardPage() {
   };
   return (
     <>
-      <div style={{ display: "flex" }}>
+      <div className="components">
         <div onClick={handleClick}>
           <BiArrowBack />
         </div>
@@ -26,8 +27,9 @@ function ViewCardPage() {
         <h3>{detials[indexValue].group.groupName} </h3>
       </div>
       <p>{detials[indexValue].group.groupDetails}</p>
+      <br />
 
-      <div style={{ display: "flex" }}>
+      <div className="components">
         <LeftComponent />
         <MiddleComponent />
         <RightComponent />
