@@ -1,0 +1,10 @@
+.components{
+    display: flex;
+}
+p{
+    margin-left: 40px;
+    color: #8b8a92;
+}
+h3{
+    margin-left: 25px;
+}

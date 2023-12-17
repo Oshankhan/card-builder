@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { MdDelete } from "react-icons/md";
 import {
   addCard,
   currentButtonVal,
@@ -84,57 +85,76 @@ const CreateNew = () => {
 
   return (
     <div>
-      <div>
-        <label className="creategroup">Create Group</label>
+      <div className="box1">
+        <label className="creategroup">Create Group*</label>
+        <br />
         <input
           type="text"
           onChange={handleGroupChange}
           name="groupName"
           value={initialValues.group.groupName}
           className="inputFeild1"
+          required
         />
-
-        <label className="decriptionheading">Add description</label>
+        <br />
+        <label className="decriptionheading">Add description </label>
+        <br />
         <input
           type="text"
           onChange={handleGroupChange}
           name="groupDetails"
           value={initialValues.group.groupDetails}
+          placeholder="Describe the roles, responsibility,skills required for the job and help candidate understand the role better"
           className="description"
         />
+      </div>
+      
+      <br /> 
 
-        {initialValues.terms.map((term, index) => (
-          <div key={index}>
-            <label>Enter Term {index + 1}</label>
-            <input
-              type="text"
-              onChange={(e) => handleTermsChange(e, index)}
-              name="title"
-              value={term.title}
-              className="inputFeild1"
-            />
+      <div className="box1">
+            {initialValues.terms.map((term, index) => (
+              <div className="term-parent" key={index}>
+                <div className="term-parent1">
+                    <label className="term1">{index + 1}.  Enter Term* </label>
+                    <br />
+                    <input
+                      type="text"
+                      onChange={(e) => handleTermsChange(e, index)}
+                      name="title"
+                      value={term.title}
+                      className="inputFeild1"
+                      required
+                    />
+                </div>
+                <div className="term-parent2">
+                    <label className="term1">Enter Definition*</label>
+                    <br />
+                    <input
+                      type="text"
+                      onChange={(e) => handleTermsChange(e, index)}
+                      name="des"
+                      value={term.des}
+                      className="inputFeild1"
+                      required
+                    />
+                </div>
+                <div className="term-parent2">
+                  {initialValues.terms.length > 1 && (
+                    <button onClick={() => deleteTerm(index)}><MdDelete /></button>
+                  )}
+                </div>
+              </div>
+            ))}
+        <br />
+        <br />
+        <button className="add-more" onClick={addNewTerm}>+ Add more </button> 
+      </div>
 
-            <label>Enter Definition {index + 1}</label>
-            <input
-              type="text"
-              onChange={(e) => handleTermsChange(e, index)}
-              name="des"
-              value={term.des}
-              className="inputFeild1"
-            />
-
-            {initialValues.terms.length > 1 && (
-              <button onClick={() => deleteTerm(index)}>Delete</button>
-            )}
-          </div>
-        ))}
-
-        <button onClick={addNewTerm}>Add More Terms</button>
+        <br />
 
         <button onClick={handleSubmit} className="createbutton">
           Create
         </button>
-      </div>
     </div>
   );
 };
