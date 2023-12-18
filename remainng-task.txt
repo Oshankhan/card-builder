@@ -1,0 +1,6 @@
+share wali button par kam karna hai-- loop ma ---- RightComponent.jsx
+
+MyFlashCard.jsx ma bootstrap wala kam hona hai
+
+GroupSelect.jsx ma className= box2 ma description ma value filed aana chaiya
+
