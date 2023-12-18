@@ -29,7 +29,7 @@ const Editing = ({ groupSelected, indexForDes, handleSaving }) => {
   const handleChange = () => {};
   return (
     <div>
-      <label>Defination</label>
+      {/* <label>Defination</label> */}
       <input
         type="text"
         value={editingValue}
@@ -37,12 +37,16 @@ const Editing = ({ groupSelected, indexForDes, handleSaving }) => {
       />
       <button onClick={handleAdd}>Add Trems </button>
       <button onClick={handleDelete}></button>
-      <button disabled={true}>Edit</button>
+      <br />
+      <button className="box4" disabled={true}>
+        Edit
+      </button>
       <button
         onClick={() => {
           handleSaving(false);
           dispatch(updateDefination(editingValue, groupSelected, indexForDes));
         }}
+        className="box5"
       >
         save
       </button>

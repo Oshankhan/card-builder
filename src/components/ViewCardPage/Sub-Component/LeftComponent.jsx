@@ -1,9 +1,7 @@
-import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
-import Row from "react-bootstrap/Row";
-import Tab from "react-bootstrap/Tab";
 import { useDispatch, useSelector } from "react-redux";
 import { termsIndex } from "../../../setUp/redux/action";
+import "./LeftComponent.css"
 
 function LeftComponent() {
   const data = useSelector((state) => state.cards);
@@ -18,23 +16,19 @@ function LeftComponent() {
   };
 
   return (
-    <div>
-      <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
-        <Row style={{ width: "18vw" }}>
-          <Col sm={4}>
+    <div className="leftcomp">
+            <p id="flash">Flashcards</p>
+            <hr />
             <ListGroup>
               {terms &&
                 terms.map((value, i) => {
                   return (
-                    <button key={i} onClick={() => handleClick(i)}>
+                    <button id="list" key={i} onClick={() => handleClick(i)}>
                       {value.title}
                     </button>
                   );
                 })}
             </ListGroup>
-          </Col>
-        </Row>
-      </Tab.Container>
     </div>
   );
 }

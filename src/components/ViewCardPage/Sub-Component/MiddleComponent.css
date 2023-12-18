@@ -1,0 +1,12 @@
+.middle{
+    border: 1px solid #fff;
+    background-color: white;
+    padding: 50px 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 8px;
+    max-width: auto;
+}
+.slider{
+    display: flex;
+}

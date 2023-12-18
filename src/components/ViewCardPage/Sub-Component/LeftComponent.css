@@ -1,0 +1,13 @@
+.leftcomp{
+    border: 1px solid #fff;
+    background-color: white;
+    padding: 15px;
+    width: 25vw;
+}
+#flash{
+    text-align: left;
+    color: #8b8a92;
+}
+#list{
+    text-align: left;
+}

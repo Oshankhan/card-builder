@@ -18,23 +18,44 @@
   border-radius: 5px;
   width: 25vw;
   border: 1.5px solid rgb(99, 97, 97);
+  margin-top: 6px;
 }
 
 .description {
   position: relative;
   height: 100px;
-  width: 70%;
-  margin: 5px 20px;
-  font-size: medium;
-  text-align: start;
+  width: 92%;
+  margin: 5px 0px;
+  font-size: small;
+  text-align: initial;
 }
 .decriptionheading {
   position: relative;
-  margin-top: -15px;
-  margin-left: 20px;
-  color: rgb(31, 31, 151);
+  margin-top: 0px;
+  margin-left: 0px;
+  color: #6b7073;
 }
 .creategroup {
-  color: rgb(31, 31, 151);
+  color: #6b7073;
   padding-bottom: 5px;
+}
+.box1 {
+  border: 1px solid #fff;
+  padding: 24px;
+  background-color: white;
+  border-radius: 8px;
+}
+.add-more{
+  color: blue;
+}
+.term1{
+  color: #6b7073;
+}
+.term-parent{
+  display: inline-flex;
+  align-items: flex-end;
+}
+.term-parent2{
+  position: relative;
+  left: 20px;
 }
