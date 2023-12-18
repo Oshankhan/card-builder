@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SelectGroupEdit from "../Edit/SelectGroupEdit.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { newGroupButtonClick } from "../../../setUp/redux/action.js";
+import "./GroupSelect.css"
 
 const GroupSelect = () => {
   const [selectedGroup, setSelectedGroup] = useState("");
@@ -23,25 +24,34 @@ const GroupSelect = () => {
   };
 
   return (
-    <div>
-      <label>Select Group:</label>
-      <select onChange={handleGroupSelect} value={selectedGroup}>
-        <option value="">Select an option</option>
-        <option value="Create New Group">Create New Group</option>
-        {itemList &&
-          itemList.map((item, index) => (
-            <option key={index} value={item.group.groupName}>
-              {item.group.groupName}
-            </option>
-          ))}
-      </select>
-      <label>Add description</label>
-      <input type="text" placeholder="This is for the des" />
+    <>
+      <div className="box2">
+        <label id="selectgroup">Select Group:</label>
+        <br />
+        <select onChange={handleGroupSelect} value={selectedGroup}>
+          <option value="">Select an option</option>
+          <option value="Create New Group">Create New Group</option>
+          {itemList &&
+            itemList.map((item, index) => (
+              <option key={index} value={item.group.groupName}>
+                {item.group.groupName}
+              </option>
+            ))}
+        </select>
+        <br />
+        <label id="description-add">Add description</label>
+        <br />
+        <input 
+          type="text" 
+          placeholder="Describe the roles, responsibility,skills required for the job and help candidate understand the role better" 
+          className="description-edit"
+        />
 
-      <br />
+        <br />
 
+      </div>
       <SelectGroupEdit groupSelected={indexItem} />
-    </div>
+    </>
   );
 };
 
