@@ -54,3 +54,11 @@ export const updateDefination = (value, groupSelected, indexForDes) => {
     },
   };
 };
+
+export const addterms = (addedtems, groupSelected) => {
+  return {
+    type: "ADD_TERMS",
+    payload: addedtems,
+    groupIndex: groupSelected,
+  };
+};

@@ -3,7 +3,7 @@ import SubNavBar from "./components/SubNavBar";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ display: "flex" }}>
       <BrandExample />
       <SubNavBar />
     </div>
