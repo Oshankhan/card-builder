@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Editing from "./Editing";
+import "./SelectGroupEdit.css"
 
 const SelectGoupEdit = ({ groupSelected }) => {
   const itemList = useSelector((state) => state.cards.itemList);
@@ -20,10 +21,11 @@ const SelectGoupEdit = ({ groupSelected }) => {
   };
 
   return (
-    <div>
+    <div className="box3">
       {groupSelected !== -1 ? (
         <>
-          <label>Terms</label>
+          <label className="term">Terms</label>
+          <br />
           <select onChange={handleTermSelect} value={setSelectedTerm}>
             {itemList &&
               itemList[groupSelected].terms.map((item, index) => {
@@ -34,20 +36,27 @@ const SelectGoupEdit = ({ groupSelected }) => {
                 );
               })}
           </select>
-          <label>Defination</label>
+          <br />
+          <br />
+          <label className="term">Defination:</label>
+          <br />
 
           {!isEditing ? (
             <>
-              <div>{itemList[groupSelected].terms[indexForDes].des}</div>
-              <button
-                onClick={() => {
-                  setIsEditing(!isEditing);
-                }}
-                disabled={isEditing ? true : false}
-              >
-                Edit
-              </button>
-              <button disabled={true}>save</button>
+              <span id="des">{itemList[groupSelected].terms[indexForDes].des}</span>
+              <br />
+              <div >
+                <button
+                  onClick={() => {
+                    setIsEditing(!isEditing);
+                  }}
+                  disabled={isEditing ? true : false}
+                  className="box4"
+                >
+                  Edit
+                </button>
+                <button disabled={true} className="box5">save</button >
+              </div>
             </>
           ) : (
             <Editing

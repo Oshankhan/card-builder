@@ -1,7 +1,7 @@
 .components{
     display: flex;
 }
-p{
+#para{
     margin-left: 40px;
     color: #8b8a92;
 }

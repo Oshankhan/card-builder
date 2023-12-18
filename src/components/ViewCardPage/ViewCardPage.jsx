@@ -26,7 +26,7 @@ function ViewCardPage() {
 
         <h3>{detials[indexValue].group.groupName} </h3>
       </div>
-      <p>{detials[indexValue].group.groupDetails}</p>
+      <p id="para" >{detials[indexValue].group.groupDetails}</p>
       <br />
 
       <div className="components">
