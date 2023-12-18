@@ -41,7 +41,7 @@ const GroupSelect = () => {
         <br />
         <label id="description-add">Add description</label>
         <br />
-        <input 
+        <textarea 
           type="text" 
           placeholder="Describe the roles, responsibility,skills required for the job and help candidate understand the role better" 
           className="description-edit"

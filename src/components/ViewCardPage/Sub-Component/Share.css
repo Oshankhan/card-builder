@@ -1,0 +1,16 @@
+.bu{
+    border: 2px dotted black;
+    border-radius: 12px;
+    padding: 4px 15px;
+    width: 285px;
+    height: 35px;
+    resize: none;
+  }
+  .butt{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .copyicon{
+    cursor: pointer;
+  }
