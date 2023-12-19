@@ -23,7 +23,6 @@ const Editing = ({ groupSelected, indexForDes, handleSaving }) => {
   };
   const handleAdd = () => {
     const temp = [...newTerms, { title: "", des: "" }];
-    console.log(temp);
   };
   const handleDelete = () => {};
   const handleChange = () => {};
