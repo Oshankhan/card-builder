@@ -30,27 +30,27 @@ function SubContainer() {
         <>Look Like you haven't made a group </>
       ) : (
         <>
-          <Container>
-            <Row>
-              <Col xs>First, but unordered</Col>
-              <Col xs={{ order: 12 }}>Second, but last</Col>
-              <Col xs={{ order: 1 }}>Third, but second</Col>
-            </Row>
-          </Container>
-
-          {/* {values.slice(0, seeMore).map((values, index) => {
-            return (
-              <div className="content" style={{ display: "flex" }} key={index}>
-                <Container>
-                  <Row>
+          <div className="content">
+            <Container>
+              <Row>
+                {values.slice(0, seeMore).map((values, index) => {
+                  return (
                     <Col md={4}>
                       <Card className="cardstyle">
                         <Card.Img className="Cardimg" src=" " />
-                        <Card.Body className="cardbody">
-                          <Card.Title className="cardtitle">
-                            {values.group.groupName}
-                          </Card.Title>
-                          <Card.Text>{values.group.groupDetails}</Card.Text>
+                        <Card.Body>
+                          <Card.Title>{values.group.groupName}</Card.Title>
+
+                          <Card.Text
+                            style={{
+                              whiteSpace: "nowrap",
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                            }}
+                          >
+                            {values.group.groupDetails}
+                          </Card.Text>
+
                           <Button
                             className="btn"
                             onClick={() => showViewCardPage(index)}
@@ -60,11 +60,11 @@ function SubContainer() {
                         </Card.Body>
                       </Card>
                     </Col>
-                  </Row>
-                </Container>
-              </div>
-            );
-          })} */}
+                  );
+                })}
+              </Row>
+            </Container>
+          </div>
         </>
       )}
       <button onClick={seeMoreoption}>see more</button>
