@@ -108,53 +108,57 @@ const CreateNew = () => {
           className="description"
         />
       </div>
-      
-      <br /> 
+
+      <br />
 
       <div className="box1">
-            {initialValues.terms.map((term, index) => (
-              <div className="term-parent" key={index}>
-                <div className="term-parent1">
-                    <label className="term1">{index + 1}.  Enter Term* </label>
-                    <br />
-                    <input
-                      type="text"
-                      onChange={(e) => handleTermsChange(e, index)}
-                      name="title"
-                      value={term.title}
-                      className="inputFeild1"
-                      required
-                    />
-                </div>
-                <div className="term-parent2">
-                    <label className="term1">Enter Definition*</label>
-                    <br />
-                    <input
-                      type="text"
-                      onChange={(e) => handleTermsChange(e, index)}
-                      name="des"
-                      value={term.des}
-                      className="inputFeild1"
-                      required
-                    />
-                </div>
-                <div className="term-parent2">
-                  {initialValues.terms.length > 1 && (
-                    <button onClick={() => deleteTerm(index)}><MdDelete /></button>
-                  )}
-                </div>
-              </div>
-            ))}
+        {initialValues.terms.map((term, index) => (
+          <div className="term-parent" key={index}>
+            <div className="term-parent1">
+              <label className="term1">{index + 1}. Enter Term* </label>
+              <br />
+              <input
+                type="text"
+                onChange={(e) => handleTermsChange(e, index)}
+                name="title"
+                value={term.title}
+                className="inputFeild1"
+                required
+              />
+            </div>
+            <div className="term-parent2">
+              <label className="term1">Enter Definition*</label>
+              <br />
+              <input
+                type="text"
+                onChange={(e) => handleTermsChange(e, index)}
+                name="des"
+                value={term.des}
+                className="inputFeild1"
+                required
+              />
+            </div>
+            <div className="term-parent2">
+              {initialValues.terms.length > 1 && (
+                <button onClick={() => deleteTerm(index)}>
+                  <MdDelete />
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
         <br />
         <br />
-        <button className="add-more" onClick={addNewTerm}>+ Add more </button> 
+        <button className="add-more" onClick={addNewTerm}>
+          + Add more{" "}
+        </button>
       </div>
 
-        <br />
+      <br />
 
-        <button onClick={handleSubmit} className="createbutton">
-          Create
-        </button>
+      <button onClick={handleSubmit} className="createbutton">
+        Create
+      </button>
     </div>
   );
 };

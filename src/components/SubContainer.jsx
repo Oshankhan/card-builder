@@ -30,7 +30,15 @@ function SubContainer() {
         <>Look Like you haven't made a group </>
       ) : (
         <>
-          {values.slice(0, seeMore).map((values, index) => {
+          <Container>
+            <Row>
+              <Col xs>First, but unordered</Col>
+              <Col xs={{ order: 12 }}>Second, but last</Col>
+              <Col xs={{ order: 1 }}>Third, but second</Col>
+            </Row>
+          </Container>
+
+          {/* {values.slice(0, seeMore).map((values, index) => {
             return (
               <div className="content" style={{ display: "flex" }} key={index}>
                 <Container>
@@ -56,7 +64,7 @@ function SubContainer() {
                 </Container>
               </div>
             );
-          })}
+          })} */}
         </>
       )}
       <button onClick={seeMoreoption}>see more</button>

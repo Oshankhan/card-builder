@@ -12,7 +12,4 @@ root.render(
     <App />
   </Provider>
 );
-
-// this is a new commit
-//hello tish is from adarsh side
 reportWebVitals();

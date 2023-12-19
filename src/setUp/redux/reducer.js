@@ -95,6 +95,19 @@ export const listReducer = (state = initialState, action) => {
       };
     }
 
+    case "ADD_TERMS":
+      const { addedtems, groupIndex } = action.payload;
+      const updatedValue = state.itemList.map((value, index) => {
+        if (index === groupIndex) {
+          return {
+            ...value,
+            terms: [...value.terms, addedtems],
+          };
+        }
+        console.log(updatedValue);
+      });
+      return state;
+
     default:
       return state;
   }

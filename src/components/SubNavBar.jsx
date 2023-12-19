@@ -1,5 +1,4 @@
 import "./SubNavBar.css";
-// import CreateNewCard from "./CreateNewCard";
 import MyFlashCard from "./MyFlashCard";
 import { useDispatch, useSelector } from "react-redux";
 import { currentButtonVal } from "../setUp/redux/action";
@@ -9,8 +8,6 @@ function SubNavBar() {
   const dispatch = useDispatch();
 
   const buttonVal = useSelector((state) => state.details.buttonVal);
-  // console.log(buttonVal);
-
   const setButton = (value) => {
     dispatch(currentButtonVal(value));
   };

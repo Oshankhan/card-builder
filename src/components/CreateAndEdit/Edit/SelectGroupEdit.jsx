@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Editing from "./Editing";
-import "./SelectGroupEdit.css"
+import "./SelectGroupEdit.css";
 
 const SelectGoupEdit = ({ groupSelected }) => {
   const itemList = useSelector((state) => state.cards.itemList);
@@ -43,9 +43,11 @@ const SelectGoupEdit = ({ groupSelected }) => {
 
           {!isEditing ? (
             <>
-              <span id="des">{itemList[groupSelected].terms[indexForDes].des}</span>
+              <span id="des">
+                {itemList[groupSelected].terms[indexForDes].des}
+              </span>
               <br />
-              <div >
+              <div>
                 <button
                   onClick={() => {
                     setIsEditing(!isEditing);
@@ -55,7 +57,9 @@ const SelectGoupEdit = ({ groupSelected }) => {
                 >
                   Edit
                 </button>
-                <button disabled={true} className="box5">save</button >
+                <button disabled={true} className="box5">
+                  save
+                </button>
               </div>
             </>
           ) : (
