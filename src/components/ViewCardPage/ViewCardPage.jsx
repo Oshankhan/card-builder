@@ -26,12 +26,14 @@ function ViewCardPage() {
 
         <h3>{detials[indexValue].group.groupName} </h3>
       </div>
-      <p id="para" >{detials[indexValue].group.groupDetails}</p>
+      <p id="para">{detials[indexValue].group.groupDetails}</p>
       <br />
 
-      <div className="components">
-        <LeftComponent />
-        <MiddleComponent />
+      <div style={{ display: "flex" }}>
+        <div className="components" id="download-report">
+          <LeftComponent />
+          <MiddleComponent />
+        </div>
         <RightComponent />
       </div>
     </>

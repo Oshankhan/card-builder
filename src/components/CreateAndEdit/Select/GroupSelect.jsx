@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SelectGroupEdit from "../Edit/SelectGroupEdit.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { newGroupButtonClick } from "../../../setUp/redux/action.js";
-import "./GroupSelect.css"
+import "./GroupSelect.css";
 
 const GroupSelect = () => {
   const [selectedGroup, setSelectedGroup] = useState("");
@@ -29,7 +29,9 @@ const GroupSelect = () => {
         <label id="selectgroup">Select Group:</label>
         <br />
         <select onChange={handleGroupSelect} value={selectedGroup}>
-          <option value="">Select an option</option>
+          <option value="" disabled>
+            Select an option
+          </option>
           <option value="Create New Group">Create New Group</option>
           {itemList &&
             itemList.map((item, index) => (
@@ -41,15 +43,18 @@ const GroupSelect = () => {
         <br />
         <label id="description-add">Add description</label>
         <br />
-        <textarea 
-          type="text" 
-          placeholder="Describe the roles, responsibility,skills required for the job and help candidate understand the role better" 
+        <textarea
+          type="text"
+          placeholder={
+            indexItem === -1
+              ? "Describe the roles, responsibility,skills required for the job and help candidate understand the role better"
+              : itemList[indexItem].group.groupDetails
+          }
           className="description-edit"
           readOnly
         />
 
         <br />
-
       </div>
       <SelectGroupEdit groupSelected={indexItem} />
     </>
