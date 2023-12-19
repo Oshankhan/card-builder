@@ -99,7 +99,7 @@ const CreateNew = () => {
         <br />
         <label className="decriptionheading">Add description </label>
         <br />
-        <input
+        <textarea
           type="text"
           onChange={handleGroupChange}
           name="groupDetails"
