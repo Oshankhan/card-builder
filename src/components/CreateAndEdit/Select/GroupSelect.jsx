@@ -45,6 +45,7 @@ const GroupSelect = () => {
           type="text" 
           placeholder="Describe the roles, responsibility,skills required for the job and help candidate understand the role better" 
           className="description-edit"
+          readOnly
         />
 
         <br />
