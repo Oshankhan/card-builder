@@ -1,0 +1,17 @@
+.buton{
+    width: 100%;
+    height: 30px;
+    border-radius: 6px;
+    border: thin;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.buton span{
+    margin: 10px;
+}
+.bu-style{
+    display: flex;
+}
