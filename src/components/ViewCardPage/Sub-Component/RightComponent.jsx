@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Button from "react-bootstrap/Button";
 import Share from "./Share.jsx";
-import "./RightComponent.css";
 
-import { TfiBackRight } from "react-icons/tfi";
-import { IoDownloadOutline } from "react-icons/io5";
-import { HiOutlinePrinter } from "react-icons/hi";
+import {
+  AiOutlineShareAlt,
+  AiOutlineDownload,
+  AiFillPrinter,
+} from "react-icons/ai";
 import jsPDF from "jspdf";
 
 function RightComponent() {
@@ -18,36 +20,34 @@ function RightComponent() {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
-    <div >
-      <div className="buton">
-        <button onClick={() => setModalShow(true)}>
-          <div className="bu-style">
-            <span><TfiBackRight /></span>
-            <span><b>Share</b></span>
+    <div className="container">
+      <div className="share">
+        <Button variant="danger" onClick={() => setModalShow(true)}>
+          <div style={{ display: "flex" }}>
+            <AiOutlineShareAlt />
+            <span>Share</span>
           </div>
-        </button>
+        </Button>
         <Share show={modalShow} onHide={() => setModalShow(false)} />
       </div>
-      <div className="buton">
-        <button onClick={() => generatePDF()}>
-          <div className="bu-style">
-            <span><IoDownloadOutline /></span>
-            <span><b>Download</b></span>
+      <div className="download">
+        <Button variant="danger" onClick={() => generatePDF()}>
+          <div style={{ display: "flex" }}>
+            <AiOutlineDownload />
+            <span>Download</span>
           </div>
-        </button>
+        </Button>
       </div>
-      <div className="buton">
-        <button >
-          <div className="bu-style">
-            <span><HiOutlinePrinter /></span>
-            <span><b>Print</b></span>
+      <div className="print">
+        <Button variant="danger" onClick={() => setModalShow(true)}>
+          <div style={{ display: "flex" }}>
+            <AiFillPrinter />
+            <span>Print</span>
           </div>
-        </button>
+        </Button>
       </div>
     </div>
   );
 }
 
 export default RightComponent;
-
-//This is for git check purpose
