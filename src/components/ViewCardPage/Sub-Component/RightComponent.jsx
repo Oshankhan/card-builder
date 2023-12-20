@@ -49,5 +49,3 @@ function RightComponent() {
 }
 
 export default RightComponent;
-
-//This is for git check purpose
