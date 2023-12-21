@@ -5,12 +5,6 @@ import { addterms, updateDefination } from "../../../setUp/redux/action";
 const Editing = ({ groupSelected, indexForDes, handleSaving }) => {
   const dispatch = useDispatch();
   const itemList = useSelector((state) => state.cards.itemList);
-  const [newTerms, setnewTerms] = useState([
-    {
-      title: "",
-      des: "",
-    },
-  ]);
 
   const [editingValue, setEditingValue] = useState(
     itemList[groupSelected].terms[indexForDes].des
@@ -21,20 +15,14 @@ const Editing = ({ groupSelected, indexForDes, handleSaving }) => {
 
     setEditingValue(value);
   };
-  const handleAdd = () => {
-    const temp = [...newTerms, { title: "", des: "" }];
-  };
   const handleDelete = () => {};
-  const handleChange = () => {};
   return (
     <div>
-      {/* <label>Defination</label> */}
       <input
         type="text"
         value={editingValue}
         onChange={handleDefinationEditing}
       />
-      <button onClick={handleAdd}>Add Trems </button>
       <button onClick={handleDelete}></button>
       <br />
       <button className="box4" disabled={true}>

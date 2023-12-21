@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { currentButtonVal } from "../setUp/redux/action";
 import ViewCardPage from "./ViewCardPage/ViewCardPage";
 import CreateAndEdit from "./CreateAndEdit/CreateAndEdit";
+
+// this is section to toggle Between Creating New Card and My Flash card
 function SubNavBar() {
   const dispatch = useDispatch();
 
@@ -16,6 +18,7 @@ function SubNavBar() {
     <div className="subnavheading">
       <h3>Create Flashcard</h3>
       <div className="Navdiv">
+        {/* mapping an array */}
         {arr &&
           arr.map((value, index) => {
             return (
@@ -33,6 +36,7 @@ function SubNavBar() {
 
       <br />
 
+{/* switch Case */}
       <div>
         {(() => {
           switch (buttonVal) {

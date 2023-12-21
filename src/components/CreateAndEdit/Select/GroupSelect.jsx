@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { newGroupButtonClick } from "../../../setUp/redux/action.js";
 import "./GroupSelect.css";
 
+// For Group selection
 const GroupSelect = () => {
   const [selectedGroup, setSelectedGroup] = useState("");
   const [indexItem, setIndexItem] = useState(-1);
