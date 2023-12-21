@@ -1,6 +1,8 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 
+// This Section is for Navigation Bar
+
 function NavBar() {
   return (
     <>

@@ -10,3 +10,9 @@
 .slider{
     display: flex;
 }
+p{
+    margin-left: 20px;
+}
+.slider img{
+    max-height: 200px;
+}

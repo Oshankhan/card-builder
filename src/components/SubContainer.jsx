@@ -67,7 +67,14 @@ function SubContainer() {
           </div>
         </>
       )}
-      <button onClick={seeMoreoption}>see more</button>
+      <button
+        style={data.itemList.length <= 6 ? { display: "none" } : {}}
+        onClick={seeMoreoption}
+        className="see-more"
+      >
+        See all
+      </button>
+
     </>
   );
 }

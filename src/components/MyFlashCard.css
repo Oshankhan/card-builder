@@ -75,3 +75,9 @@ body{
 .cardtitle{
     font-weight: 700 !important;
 }
+.see-more{
+    position: absolute;
+    right: 250px;
+    color: #f00037;
+
+}

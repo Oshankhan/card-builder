@@ -4,13 +4,8 @@ import "./MyFlashCard.css";
 
 import SubContainer from "./SubContainer";
 
+// FlashCard View Page
 function MyFlashCard() {
-  // const data = useSelector((state) => state.cards);
-  // const groupName = data.itemList[0].group.groupName;
-  // const groupDetails = data.itemList[0].group.groupDetails;
-
-  // console.log(data);
-  // console.log(data.itemList[0].group.groupName);
 
   return (
     <div className="cardgroup container">

@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import Editing from "./Editing";
 import "./SelectGroupEdit.css";
 
+// this section for Edit  Purpose
+
 const SelectGoupEdit = ({ groupSelected }) => {
   const itemList = useSelector((state) => state.cards.itemList);
 
