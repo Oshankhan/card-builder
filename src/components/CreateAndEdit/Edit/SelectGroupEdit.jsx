@@ -28,7 +28,7 @@ const SelectGoupEdit = ({ groupSelected }) => {
         <>
           <label className="term">Terms</label>
           <br />
-          <select onChange={handleTermSelect} value={setSelectedTerm}>
+          <select onChange={handleTermSelect} value={setSelectedTerm} id="select">
             {itemList &&
               itemList[groupSelected].terms.map((item, index) => {
                 return (
