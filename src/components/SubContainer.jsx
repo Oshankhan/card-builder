@@ -74,7 +74,6 @@ function SubContainer() {
       >
         See all
       </button>
-
     </>
   );
 }
