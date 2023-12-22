@@ -76,9 +76,8 @@ function SubContainer() {
         onClick={seeMoreoption}
         className="see-more"
       >
-       <h3>See all</h3> 
+      <h3>See all</h3> 
       </button>}
-
     </>
   );
 }
