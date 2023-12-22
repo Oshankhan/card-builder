@@ -2,7 +2,7 @@
     border: 1px solid #fff;
     background-color: white;
     padding: 15px;
-    width: 25vw;
+    width: 12vw;
 }
 #flash{
     text-align: left;
@@ -10,4 +10,7 @@
 }
 #list{
     text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

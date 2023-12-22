@@ -16,8 +16,11 @@ function SubContainer() {
 
   const [values, setvalues] = useState(data.itemList);
 
+  const [buttonVisible, setButtonVisible] = useState(true);
+
   const seeMoreoption = () => {
     setSeeMore(data.itemList.length);
+    setButtonVisible(false);
   };
 
   const showViewCardPage = (index) => {
@@ -67,13 +70,14 @@ function SubContainer() {
           </div>
         </>
       )}
+      {buttonVisible &&
       <button
         style={data.itemList.length <= 6 ? { display: "none" } : {}}
         onClick={seeMoreoption}
         className="see-more"
       >
-        See all
-      </button>
+      <h3>See all</h3> 
+      </button>}
     </>
   );
 }

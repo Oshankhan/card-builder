@@ -49,3 +49,6 @@
 #des{
     background-color: #f5f1ec;
 }
+#select{
+    min-width: 15vw;
+}
