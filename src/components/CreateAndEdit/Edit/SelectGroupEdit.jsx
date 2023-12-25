@@ -26,51 +26,51 @@ const SelectGoupEdit = ({ groupSelected }) => {
     <div className="box3">
       {groupSelected !== -1 ? (
         <>
-          <label className="term">Terms</label>
-          <br />
-          <select onChange={handleTermSelect} value={setSelectedTerm} id="select">
-            {itemList &&
-              itemList[groupSelected].terms.map((item, index) => {
-                return (
-                  <option key={index} value={item.title}>
-                    {item.title}
-                  </option>
-                );
-              })}
-          </select>
-          <br />
-          <br />
-          <label className="term">Defination:</label>
-          <br />
+            <label className="term">Terms</label>
+            <br />
+            <select onChange={handleTermSelect} value={setSelectedTerm} id="select">
+              {itemList &&
+                itemList[groupSelected].terms.map((item, index) => {
+                  return (
+                    <option key={index} value={item.title}>
+                      {item.title}
+                    </option>
+                  );
+                })}
+            </select> 
+            <br />
+            <br />
+            <label className="term">Defination:</label>
+            <br />
 
-          {!isEditing ? (
-            <>
-              <span id="des">
-                {itemList[groupSelected].terms[indexForDes].des}
-              </span>
-              <br />
-              <div>
-                <button
-                  onClick={() => {
-                    setIsEditing(!isEditing);
-                  }}
-                  disabled={isEditing ? true : false}
-                  className="box4"
-                >
-                  Edit
-                </button>
-                <button disabled={true} className="box5">
-                  save
-                </button>
-              </div>
-            </>
-          ) : (
-            <Editing
-              groupSelected={groupSelected}
-              indexForDes={indexForDes}
-              handleSaving={handleSaving}
-            />
-          )}
+            {!isEditing ? (
+              <>
+                <span id="des">
+                  {itemList[groupSelected].terms[indexForDes].des}
+                </span>
+                <br />
+                <div>
+                  <button
+                    onClick={() => {
+                      setIsEditing(!isEditing);
+                    }}
+                    disabled={isEditing ? true : false}
+                    className="box4"
+                  >
+                    Edit
+                  </button>
+                  <button disabled={true} className="box5">
+                    save
+                  </button>
+                </div>
+              </>
+            ) : (
+              <Editing
+                groupSelected={groupSelected}
+                indexForDes={indexForDes}
+                handleSaving={handleSaving}
+              />
+            )}
         </>
       ) : (
         <>Empty</>

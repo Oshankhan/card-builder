@@ -34,7 +34,7 @@ function LeftComponent() {
                   alt="First slide"
                 />
                 <br />
-                <p>{vlaues.des}</p>
+                <p id="para1">{vlaues.des}</p>
               </div>
             </Carousel.Item>
           );

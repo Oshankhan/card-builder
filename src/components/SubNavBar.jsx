@@ -17,7 +17,7 @@ function SubNavBar() {
   return (
     <div className="subnavheading">
       <h3>Create Flashcard</h3>
-      <div className="Navdiv">
+      <div>
         {/* mapping an array */}
         {arr &&
           arr.map((value, index) => {
