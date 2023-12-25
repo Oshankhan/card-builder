@@ -18,12 +18,16 @@ function RightComponent() {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
-    <div >
+    <div>
       <div className="buton">
         <button onClick={() => setModalShow(true)}>
           <div className="bu-style">
-            <span><TfiBackRight /></span>
-            <span><b>Share</b></span>
+            <span>
+              <TfiBackRight />
+            </span>
+            <span>
+              <b>Share</b>
+            </span>
           </div>
         </button>
         <Share show={modalShow} onHide={() => setModalShow(false)} />
@@ -31,16 +35,24 @@ function RightComponent() {
       <div className="buton">
         <button onClick={() => generatePDF()}>
           <div className="bu-style">
-            <span><IoDownloadOutline /></span>
-            <span><b>Download</b></span>
+            <span>
+              <IoDownloadOutline />
+            </span>
+            <span>
+              <b>Download</b>
+            </span>
           </div>
         </button>
       </div>
       <div className="buton">
-        <button >
+        <button>
           <div className="bu-style">
-            <span><HiOutlinePrinter /></span>
-            <span><b>Print</b></span>
+            <span>
+              <HiOutlinePrinter />
+            </span>
+            <span>
+              <b>Print</b>
+            </span>
           </div>
         </button>
       </div>
