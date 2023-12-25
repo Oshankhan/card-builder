@@ -44,7 +44,7 @@ function SubContainer() {
                         <Card.Body>
                           <Card.Title>{values.group.groupName}</Card.Title>
 
-                          <Card.Text
+                          <Card.Text className=" text-center"
                             style={{
                               whiteSpace: "nowrap",
                               overflow: "hidden",
